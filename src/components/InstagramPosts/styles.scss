@@ -1,0 +1,84 @@
+body {
+    background-color: rgb(9, 9, 9);
+    color: white;
+    font-family: Arial, Helvetica, sans-serif, sans-serif;
+
+    .div-padre {
+        margin: 0 auto;
+        max-width: 300px;
+        align-items: center;
+    }
+    .logo-ig {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+    }
+    .barra-ig {
+        display: flex;
+        align-items: center;
+        gap: 280px;
+
+        .btn-crear {
+            background-color: rgb(73, 82, 82);
+            color: rgb(255, 255, 255);
+            border-radius: 8px;
+            cursor: pointer;
+            border: none;
+            padding: 5px 8px;
+        }
+    }
+    .publicacion {
+        margin-top: 80px;
+
+        .comment {
+            display: flex;
+            gap: 10px;
+            text-decoration: none;
+            align-items: center;
+
+            p {
+                font-size: 25px;
+                cursor: pointer;
+            }
+        }
+
+        .barra-publi {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 350px;
+            margin-bottom: 10px;
+            margin: 0 auto;
+            max-width: 500px;
+
+            img {
+                border-radius: 10px;
+            }
+
+            .barra-perfil {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                width: 100%;
+
+                .post-date{
+                    color: #666565;
+                    font-size: 15px;
+                }
+                img {
+                    border-radius: 10px;
+                }
+                h3 {
+                    font-size: 12px;
+                }
+            }
+
+            button {
+                background-color: black;
+                color: white;
+                border-radius: 10px;
+                cursor: pointer;
+            }
+        }
+    }
+}

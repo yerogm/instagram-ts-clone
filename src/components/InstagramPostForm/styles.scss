@@ -1,0 +1,25 @@
+.contenedor {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+
+    input {
+        padding: 7px 8px;
+        border-radius: 15px;
+        background-color: transparent;
+        border: 1px solid rgb(82, 78, 78);
+        color: white;
+    }
+}
+.btn-crear{
+    margin-top: 25px;
+
+    button{
+        background-color: rgb(39, 39, 214);
+        color: white;
+        border: none;
+        border-radius: 10px;
+        padding: 5px 8px;
+        cursor: pointer;
+    }
+}
