@@ -90,7 +90,7 @@ export default function InstagramPostCard(props: InstagramPostCardProps) {
 
                         <p onClick={() => setShowCommentModal(true)}>💬</p>
                     </div>
-                    <p>{post.likes} Me Gustas</p>
+                    <p>{post.likes} Me Gustas XD</p>
                     <span style={{ fontSize: "18px" }}>{post.description}</span>
                 </div>
             </div>
