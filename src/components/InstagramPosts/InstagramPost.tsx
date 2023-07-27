@@ -67,7 +67,7 @@ export default function InstagramPostCard(props: InstagramPostCardProps) {
                         </button>
                     </div>
                 </div>
-                <div className="post">
+                <div className="post post-2">
                     <img
                         src={post.image}
                         alt=""
