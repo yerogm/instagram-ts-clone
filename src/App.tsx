@@ -1,6 +1,14 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { default as CrearCuenta, default as CrearPublicacion } from "./components/InstagramPostForm/InstagramPostForm";
+import {
+    default as CrearCuenta,
+    default as CrearPublicacion,
+    InstagramPost,
+} from "./components/InstagramPostForm/InstagramPostForm";
 import PaginaPrincipal from "./components/InstagramPosts/InstagramPostList";
+import CrearComentario, {
+    CrearComentarioProps,
+} from "./components/Comentarios/CrearComentario";
+import { useState } from "react";
 
 function App() {
     return (

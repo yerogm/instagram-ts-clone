@@ -2,6 +2,7 @@ import { addDoc, collection } from "firebase/firestore";
 import { useState } from "react";
 import { db } from "../firebaseConfig/firebase";
 import "./styles.scss";
+import moment from "moment";
 
 export interface InstagramPost {
     id: string;
@@ -9,8 +10,16 @@ export interface InstagramPost {
     image: string;
     user: string;
     imgUser: string;
-    likes: number
-    fecha: string
+    likes: number;
+    fecha: string;
+    comments?: InstagramComment[];
+    likeComment: number;
+}
+
+export interface InstagramComment {
+    image: string;
+    user: string;
+    description: string;
 }
 
 const InstagramPostForm = () => {
@@ -21,7 +30,8 @@ const InstagramPostForm = () => {
         image: "",
         imgUser: "",
         likes: 0,
-        fecha: ""
+        fecha: moment().format(),
+        likeComment: 0,
     });
     const instagramCollection = collection(db, "instagram");
 
@@ -33,7 +43,7 @@ const InstagramPostForm = () => {
     return (
         <div>
             <div>
-                <form onSubmit={crearPublicacion}>
+                <div>
                     <div className="contenedor">
                         <input
                             type="text"
@@ -77,10 +87,10 @@ const InstagramPostForm = () => {
                             }
                         />
                     </div>
-                    <div className="btn-crear">
+                    <form onSubmit={crearPublicacion} className="btn-crear">
                         <button type="submit">Crear</button>
-                    </div>
-                </form>
+                    </form>
+                </div>
             </div>
         </div>
     );

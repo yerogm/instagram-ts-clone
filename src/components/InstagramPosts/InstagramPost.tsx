@@ -1,20 +1,25 @@
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { deleteDoc, doc, updateDoc } from "firebase/firestore";
+import moment from "moment";
 import { useState } from "react";
 import CrearComentario from "../Comentarios/CrearComentario";
 import { InstagramPost } from "../InstagramPostForm/InstagramPostForm";
-import Modal from "../Modal";
+
 import { db } from "../firebaseConfig/firebase";
-import moment from "moment";
+import Modal from "../Modal";
+import { Link } from "react-router-dom";
+import 'moment/locale/es'
 moment.locale("es");
 
-interface InstagramPostCardProps {
+export interface InstagramPostCardProps {
     post: InstagramPost;
     onDeletePost: () => void;
 }
 
 export default function InstagramPostCard(props: InstagramPostCardProps) {
+    moment.locale('es');
+
     const [post, setPost] = useState(props.post);
     const [showCommentModal, setShowCommentModal] = useState(false);
     const eliminarPublicacion = async (id: string) => {
@@ -31,14 +36,23 @@ export default function InstagramPostCard(props: InstagramPostCardProps) {
         await updateDoc(postDoc, postActualizado);
     };
 
+    console.log("POST WITH COMMENTS: ", post);
+
     return (
         <div>
             <Modal
                 title="Crear Comentario"
                 show={showCommentModal}
+                ocultarHeader
                 setShow={setShowCommentModal}
             >
-                <CrearComentario />
+                <CrearComentario
+                    post={post}
+                    onCreate={(value) => {
+                        setShowCommentModal(false);
+                        setPost(value);
+                    }}
+                />
             </Modal>
             <div className="publicacion">
                 <div className="barra-publi">
@@ -56,12 +70,11 @@ export default function InstagramPostCard(props: InstagramPostCardProps) {
                         </span>
                     </div>
 
-                    <div>
+                    <div className="eliminar">
                         <button
                             onClick={() => {
                                 eliminarPublicacion(post.id);
                             }}
-                            className="eliminar"
                         >
                             X
                         </button>
@@ -90,8 +103,9 @@ export default function InstagramPostCard(props: InstagramPostCardProps) {
 
                         <p onClick={() => setShowCommentModal(true)}>💬</p>
                     </div>
-                    <p>{post.likes} Me Gustas XD</p>
+                    <p>{post.likes} Me Gustas </p>
                     <span style={{ fontSize: "18px" }}>{post.description}</span>
+                    <p>Ver Los {post.comments?.length} Comentarios</p>
                 </div>
             </div>
         </div>
